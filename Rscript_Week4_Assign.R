@@ -134,8 +134,17 @@
 			> tidyDataSorted <- tidyData2[order(tidyData2$subjID, tidyData2$actID), ]
 			
 
-    "tidyDataSorted" provides the mean for every subject (30 subjects or volunteers) for each of the acitivy (6 activities).\
-    
+    "tidyDataSorted" provides the mean for every subject (30 subjects or volunteers) for each of the acitivy (6 activities).
+ 
+    Step 5.3 Label data set with descriptive variable names
+			colDataSorted <- colnames(tidyDataSorted)
+			colDataSorted <- gsub("act", "Activity", colDataSorted)
+			colDataSorted <- gsub("subj", "Subject", colDataSorted)
+			colDataSorted <- gsub("-mean", "Mean", colDataSorted)
+			colDataSorted <- gsub("-std", "Std", colDataSorted)
+			colDataSorted <- gsub("[-()]", "", colDataSorted)
+			colnames(tidyDataSorted) = colDataSorted
+          
 6. Write the Tidy Data set to a text file in "./data"
 
 			> ?write.table
