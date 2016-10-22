@@ -1,11 +1,11 @@
 # Code Book
 
-This code book summarizes the resulting data fields in tidy.txt.
+This code book summarizes the resulting data fields in tidyDataSorted.txt.
 
 ## Identifiers
 
-- subject - The ID of the test subject
-- activity - The type of activity performed when the corresponding measurements were taken
+- SubjectID - The ID of the test subject
+- ActivityID - The type of activity performed when the corresponding measurements were taken
 
 ## Measurements
 
@@ -89,7 +89,7 @@ This code book summarizes the resulting data fields in tidy.txt.
 - fBodyBodyGyroJerkMagStd
 - fBodyBodyGyroJerkMagMeanFreq
 
-## Activity Labels
+## Activity Type Labels
 
 1. WALKING (value 1): subject was walking during the test
 2. WALKING_UPSTAIRS (value 2): subject was walking up a staircase during the test
