@@ -19,5 +19,5 @@ The goal is to prepare tidy data whic can be used for later analysis
 5. rom the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 6. Write the Tidy Data set to a text file. 
 
-The end result is shown in the file `tinyDataSet.txt`
+The end result is shown in the file `tinyDataSorted.txt`
 
