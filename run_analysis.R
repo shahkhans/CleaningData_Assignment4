@@ -69,7 +69,7 @@ rm(mergeDataTrain)
 #	Step 2.2 Prepare a vector of all columns that provide mean and standard deviation
 #			 Also include the first 2 columns with the Activity and Subject IDs
 			 
-col_mean_std <- c(1,2,grep("std", colnames(mergeData)), grep("mean", colnames(mergeData)))
+col_mean_std <- c(1,2,grep("\\bstd\\b", colnames(mergeData)), grep("\\bmean\\b", colnames(mergeData)))
 			 
 #	Step 2.3 Extract all measurements with the above columns
 mean_std_data <- mergeData[, col_mean_std]
@@ -98,11 +98,9 @@ tidyData2 <- aggregate(.~(subjID+actID+actType), mean_std_act_data, mean)
 #	Step 5.2 Sort the tidy data by subject,activity
 	
 tidyDataSorted <- tidyData2[order(tidyData2$subjID, tidyData2$actID), ]
+
+#	Sort 5.3 Label data set with descriptive variable names
 			
-
-#    "tidyDataSorted" provides the mean for every subject (30 subjects or volunteers) for each of the acitivy (6 activities).\
-
-#   Sort 5.3 Label data set with descriptive variable names
 colDataSorted <- colnames(tidyDataSorted)
 colDataSorted <- gsub("act", "Activity", colDataSorted)
 colDataSorted <- gsub("subj", "Subject", colDataSorted)
@@ -110,7 +108,9 @@ colDataSorted <- gsub("-mean", "Mean", colDataSorted)
 colDataSorted <- gsub("-std", "Std", colDataSorted)
 colDataSorted <- gsub("[-()]", "", colDataSorted)
 colnames(tidyDataSorted) = colDataSorted
-        
+
+#    "tidyDataSorted" provides the mean for every subject (30 subjects or volunteers) for each of the acitivy (6 activities).\
+    
 #6. Write the Tidy Data set to a text file in "./data"
 
 write.table(tidyDataSorted, "./data/tidyDataSorted.txt", row.name = FALSE)
